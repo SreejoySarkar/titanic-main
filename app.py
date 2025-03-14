@@ -9,7 +9,7 @@ model = pickle.load(open('abc.pkl', 'rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
@@ -18,10 +18,7 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
-    
-
     return render_template('result.html', prediction_text='The Passenger {}'.format(prediction[0]))
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False) # Change is here: debug=False
